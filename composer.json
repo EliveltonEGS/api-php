@@ -1,0 +1,24 @@
+{
+    "name": "elivelton/calendar",
+    "autoload": {
+        "psr-4": {
+            "Calendar\\": "src/"
+        },
+        "files": [
+            "src/Config.php"
+        ]
+    },
+    "authors": [
+        {
+            "name": "Elivelton",
+            "email": "eliveltongsoficial@gmail.com"
+        }
+    ],
+    "require": {
+        "phpunit/phpunit": "^9.5",
+        "doctrine/orm": "^2.10",
+        "symfony/cache": "^5.3",
+        "robmorgan/phinx": "^0.12.8",
+        "doctrine/annotations": "^1.13"
+    }
+}
