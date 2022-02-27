@@ -4,11 +4,16 @@ namespace Calendar\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
 
+/*
+$serial = hash('sha512', mt_rand());
+echo $serial;
+*/
+
 /**
  * @ORM\Entity
  * @ORM\Table(name="customers")
  */
-class Customer {
+class Users {
 
     /**
      * @ORM\Id
@@ -18,7 +23,7 @@ class Customer {
     private int $id;
     
     /**
-     * @ORM\Column(type="string", length=255)
+     * @ORM\Column(type="string", length=50)
      */
     private string $name;
 

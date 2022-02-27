@@ -12,7 +12,7 @@ return
         'development' => [
             'adapter' => 'mysql',
             'host' => 'localhost',
-            'name' => 'calendar',
+            'name' => 'ecommerce',
             'user' => 'root',
             'pass' => '',
             'port' => '3306',
