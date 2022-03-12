@@ -3,9 +3,9 @@
 namespace Calendar\Model;
 
 use Calendar\Data\GetConnection;
-use Calendar\Entity\Customer;
+use Calendar\Entity\User;
 
-class CustomerModel implements ICustomerModel {
+class UserModel implements IUserModel{
 
     private $getConnection;
 
@@ -15,13 +15,22 @@ class CustomerModel implements ICustomerModel {
 
     }
 
-    public function findAll(): array {
+    public function find(): array {
 
         $sql = $this->getConnection->entityManager()->createQueryBuilder();
-        $sql->select("c")->from(Customer::class, "c");
+        $sql->select("u")->from(User::class, "u");
         $query = $sql->getQuery();
         $products = $query->getArrayResult();
         return $products;   
+
+    }
+
+    public function create(User $user): User {
+
+        $em = $this->getConnection->entityManager();
+        $em->persist($user);
+        $em->flush();
+        return $user;
 
     }
 

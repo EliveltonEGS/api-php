@@ -1,6 +1,7 @@
 <?php
 
-use Calendar\Controller\CustomerController;
+use Calendar\Entity\User;
+use Calendar\Service\UserService;
 
 require __DIR__ . '/vendor/autoload.php';
 
@@ -20,19 +21,32 @@ $router->get('/contact', function () {
     return 'contact';
 });*/
 
-$router->get("/customers", function() {
+$router->get("/users", function() {
 
-    $customerController = new CustomerController();
-    $results = $customerController->findAll();
-    echo json_encode($results);
+    echo json_encode((new UserService())->find());
 
 });
 
+$router->post("/user/create", function() {
 
+    $json = file_get_contents("php://input");
+    $obj = json_decode($json);
+
+    $user = new User();
+    $user->setFirst_name($obj->first_name);
+    $user->setLast_name($obj->last_name);
+    $user->setMail($obj->mail);
+    $user->setPwd($obj->pwd);
+    $user->setConfirm_pwd($obj->confirm_pwd);
+
+    (new UserService())->create($user);
+    echo json_encode($user->toString());
+
+});
 
 $result = $router->handler();
 
-// if return false, page 4040 not found
+// if return false, page 404 not found
 if (!$result) {
     http_response_code(404);
     echo '<h1>404 Not Found!</h1>';

@@ -2,7 +2,7 @@
 php -S localhost:8000 -t public/
 ```
 
-##Commands Migrate
+## Commands Migrate
 
 composer require robmorgan/phinx
 vendor\bin\phinx init
