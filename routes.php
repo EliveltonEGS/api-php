@@ -39,7 +39,7 @@ $router->post("/user/create", function() {
     $user->setPwd($obj->pwd);
     $user->setConfirm_pwd($obj->confirm_pwd);
 
-    (new UserService())->create($user);
+    //(new UserService())->create($user);
     echo json_encode($user->toString());
 
 });
