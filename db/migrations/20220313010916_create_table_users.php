@@ -24,8 +24,7 @@ final class CreateTableUsers extends AbstractMigration {
                 ->addColumn("last_name", "string", ["null" => false, "length" => 50])
                 ->addColumn("mail", "string", ["null" => false, "length" => 50])
                 ->addColumn("pwd", "string", ["null" => false, "length" => 32])
-                ->addColumn("confirm_pwd", "string", ["null" => false, "length" => 32])
-                ->addColumn("created_at", "timestamp", ["null" => false])      
+                ->addColumn("confirm_pwd", "string", ["null" => false, "length" => 32])    
                 ->create();
     }
 
