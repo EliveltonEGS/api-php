@@ -22,7 +22,6 @@ $router->get('/contact', function () {
 });*/
 
 $router->get("/users", function () {
-
     echo json_encode((new UserController())->find());
 });
 
@@ -39,11 +38,24 @@ $router->post("/user/create", function () {
         $user->setConfirm_pwd(md5($obj->confirm_pwd));
 
     if($obj->pwd != $obj->confirm_pwd) {
-        echo json_encode(responseErro('Pwd not is equals Confirm_pwd', 'user', $user->toString()));
+        echo json_encode(responseSuccessPartial('Pwd not is equals Confirm_pwd', 'user', $user->toString()));
     } else {
         (new UserController())->create($user);
         echo json_encode(responseSuccess('User Created with success', 'user', $user->toString()));
     }
+});
+
+$router->post("/user/login", function () {
+    $json = file_get_contents("php://input");
+    $obj = json_decode($json);
+
+    if(!empty((new UserController())->login($obj->mail, $obj->pwd))) {
+        echo json_encode(responseSuccess('User success', 'user', (new UserController())->login($obj->mail, $obj->pwd)));
+    } else {
+        $obj->pwd = md5($obj->pwd);
+        echo json_encode(responseSuccessPartial('User not found', 'user', $obj));
+    }
+    
 });
 
 $result = $router->handler();

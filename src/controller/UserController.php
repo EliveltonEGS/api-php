@@ -20,8 +20,20 @@ class UserController
         return $this->userService->find();
     }
 
+    /**
+     * @var User $user
+     */
     public function create(User $user): void
     {
         $this->userService->create($user);
+    }
+
+    /**
+     * @var string $mail
+     * @var string $pwd
+     */
+    public function login(string $mail, string $pwd)
+    {
+        return $this->userService->login($mail, $pwd);
     }
 }
