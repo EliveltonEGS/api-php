@@ -3,31 +3,36 @@
 namespace Calendar\Service;
 
 use Calendar\Entity\User;
-use Calendar\Model\UserModel;
+use Calendar\Data\GetConnection;
+use Calendar\Repository\UserRepository;
 
-class UserService{
+class UserService implements UserRepository{
 
-    private $userModel;
+    private $getConnection;
 
     public function __construct() {
+        
+        $this->getConnection = new GetConnection();
 
-        $this->userModel = new UserModel();
+    }
+
+    public function find(): array {
+        
+        $sql = $this->getConnection->entityManager()->createQueryBuilder();
+        $sql->select("u")->from(User::class, "u");
+        $query = $sql->getQuery();
+        return $query->getArrayResult();
         
     }
 
-    public function find() {
 
-        return $this->userModel->find();
-
-    }
-
-    public function create(User $user): User {
-
-        $user->setPwd(md5($user->getPwd()));
-        $user->setConfirm_pwd(md5($user->getConfirm_pwd()));
-        $this->userModel->create($user);
-        return $user;
- 
-    }
+//    public function create(User $user): User {
+//
+//        $user->setPwd(md5($user->getPwd()));
+//        $user->setConfirm_pwd(md5($user->getConfirm_pwd()));
+//        $this->userModel->create($user);
+//        return $user;
+// 
+//    }
 
 }

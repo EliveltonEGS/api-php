@@ -12,7 +12,9 @@ class GetConnection {
         $paths = array(__DIR__ . "/../Entity/");
         $isDevMode = true;
         $config = Setup::createAnnotationMetadataConfiguration($paths, $isDevMode, null, null, false);
-        $params = ["url" => "mysql://".USER.":@".HOST."/".DB];
+        $params = [
+            "url" => "mysql://".USER.":".PASS."@".HOST."/".DB
+        ];
         return EntityManager::create($params, $config);
         
     }
