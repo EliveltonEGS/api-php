@@ -1,7 +1,7 @@
 <?php
 
 use Calendar\Entity\User;
-use Calendar\Service\UserService;
+use Calendar\Controller\UserController;
 
 require __DIR__ . '/vendor/autoload.php';
 
@@ -21,27 +21,29 @@ $router->get('/contact', function () {
     return 'contact';
 });*/
 
-$router->get("/users", function() {
+$router->get("/users", function () {
 
-    echo json_encode((new UserService())->find());
-
+    echo json_encode((new UserController())->find());
 });
 
-$router->post("/user/create", function() {
-
+$router->post("/user/create", function () {
     $json = file_get_contents("php://input");
     $obj = json_decode($json);
 
     $user = new User();
-    $user->setFirst_name($obj->first_name);
-    $user->setLast_name($obj->last_name);
-    $user->setMail($obj->mail);
-    $user->setPwd($obj->pwd);
-    $user->setConfirm_pwd($obj->confirm_pwd);
+        $user->setUser_id(hashId());
+        $user->setFirst_name($obj->first_name);
+        $user->setLast_name($obj->last_name);
+        $user->setMail($obj->mail);
+        $user->setPwd(md5($obj->pwd));
+        $user->setConfirm_pwd(md5($obj->confirm_pwd));
 
-    //(new UserService())->create($user);
-    echo json_encode($user->toString());
-
+    if($obj->pwd != $obj->confirm_pwd) {
+        echo json_encode(responseErro('Pwd not is equals Confirm_pwd', 'user', $user->toString()));
+    } else {
+        (new UserController())->create($user);
+        echo json_encode(responseSuccess('User Created with success', 'user', $user->toString()));
+    }
 });
 
 $result = $router->handler();

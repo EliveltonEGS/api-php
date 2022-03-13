@@ -14,7 +14,7 @@ return
             'host' => 'localhost',
             'name' => 'calendar',
             'user' => 'root',
-            'pass' => 'q1w2e3r4',
+            'pass' => '',
             'port' => '3306',
             'charset' => 'utf8',
         ]

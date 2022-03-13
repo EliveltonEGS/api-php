@@ -1,18 +1,27 @@
 <?php
 
+namespace Calendar\Controller;
+
+use Calendar\Entity\User;
 use Calendar\Service\UserService;
 
-class UserControlelr {
+class UserController
+{
 
-    private UserService $userService;
+    private $userService;
 
     public function __construct()
     {
-        $this->_userService = new UserService();
-    }
-    
-    public function find() {
-
+        $this->userService = new UserService();
     }
 
+    public function find(): array
+    {
+        return $this->userService->find();
+    }
+
+    public function create(User $user): void
+    {
+        $this->userService->create($user);
+    }
 }

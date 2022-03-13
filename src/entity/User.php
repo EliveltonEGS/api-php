@@ -25,7 +25,7 @@ class User {
     private int $id;
 
     /**
-     * @ORM\column(typ="string", length=128)
+     * @ORM\column(type="string", length=128)
      * @var string
      */
     private string $user_id;
@@ -61,18 +61,6 @@ class User {
     private string $confirm_pwd;
 
     /**
-     * @ORM\Column(type="timestamp")
-     * @var \DateTimeZone
-     */
-    private \DateTimeZone $crated_at;
-
-    /**
-     * @ORM\Column(type="timestamp")
-     * @var \DateTimeZone
-     */
-    private \DateTimeZone $updated_at;
-
-    /**
      * Getters
      */
     public function getId(): int {
@@ -101,14 +89,6 @@ class User {
 
     public function getConfirm_pwd(): string {
         return $this->confirm_pwd;
-    }
-
-    public function getCrated_at(): \DateTimeZone {
-        return $this->crated_at;
-    }
-
-    public function getUpdated_at(): \DateTimeZone {
-        return $this->updated_at;
     }
 
     /**
@@ -142,14 +122,6 @@ class User {
         $this->confirm_pwd = $confirm_pwd;
     }
 
-    public function setCrated_at(\DateTimeZone $crated_at): void {
-        $this->crated_at = $crated_at;
-    }
-
-    public function setUpdated_at(\DateTimeZone $updated_at): void {
-        $this->updated_at = $updated_at;
-    }
-
     /**
      * function toString
      * @return array
@@ -157,6 +129,7 @@ class User {
     public function toString(): array {
 
         $users[] = [
+            "user_id" => $this->user_id,
             "first_name" => $this->first_name,
             "last_name" => $this->last_name,
             "mail" => $this->mail,
