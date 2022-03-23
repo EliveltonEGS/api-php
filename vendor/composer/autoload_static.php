@@ -21,6 +21,7 @@ class ComposerStaticInitdc69626a64c8d29cc4d1fb1c5094e1f6
         '72142d7b40a3a0b14e91825290b5ad82' => __DIR__ . '/..' . '/cakephp/core/functions.php',
         '948ad5488880985ff1c06721a4e447fe' => __DIR__ . '/..' . '/cakephp/utility/bootstrap.php',
         '25072dd6e2470089de65ae7bf11d3109' => __DIR__ . '/..' . '/symfony/polyfill-php72/bootstrap.php',
+        '3917c79c5052b270641b5a200963dbc2' => __DIR__ . '/..' . '/kint-php/kint/init.php',
         '52ef77c369eeebbf4d1398de23faed46' => __DIR__ . '/../..' . '/src/Config.php',
     );
 
@@ -61,6 +62,10 @@ class ComposerStaticInitdc69626a64c8d29cc4d1fb1c5094e1f6
             'Prophecy\\' => 9,
             'PhpParser\\' => 10,
             'Phinx\\' => 6,
+        ),
+        'K' => 
+        array (
+            'Kint\\' => 5,
         ),
         'D' => 
         array (
@@ -189,6 +194,10 @@ class ComposerStaticInitdc69626a64c8d29cc4d1fb1c5094e1f6
         'Phinx\\' => 
         array (
             0 => __DIR__ . '/..' . '/robmorgan/phinx/src/Phinx',
+        ),
+        'Kint\\' => 
+        array (
+            0 => __DIR__ . '/..' . '/kint-php/kint/src',
         ),
         'Doctrine\\Persistence\\' => 
         array (

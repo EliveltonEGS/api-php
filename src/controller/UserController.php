@@ -15,7 +15,7 @@ class UserController
         $this->userService = new UserService();
     }
 
-    public function find(): array
+    public function find()#: array
     {
         return $this->userService->find();
     }

@@ -1,5 +1,5 @@
 {
-    "name": "elivelton/calendar",
+    "name": "elivelton/api-php",
     "autoload": {
         "psr-4": {
             "Calendar\\": "src/"
@@ -19,6 +19,7 @@
         "doctrine/orm": "^2.10",
         "symfony/cache": "^5.3",
         "robmorgan/phinx": "^0.12.8",
-        "doctrine/annotations": "^1.13"
+        "doctrine/annotations": "^1.13",
+        "kint-php/kint": "^4.1"
     }
 }

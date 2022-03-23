@@ -20,5 +20,6 @@ return array(
     '72142d7b40a3a0b14e91825290b5ad82' => $vendorDir . '/cakephp/core/functions.php',
     '948ad5488880985ff1c06721a4e447fe' => $vendorDir . '/cakephp/utility/bootstrap.php',
     '25072dd6e2470089de65ae7bf11d3109' => $vendorDir . '/symfony/polyfill-php72/bootstrap.php',
+    '3917c79c5052b270641b5a200963dbc2' => $vendorDir . '/kint-php/kint/init.php',
     '52ef77c369eeebbf4d1398de23faed46' => $baseDir . '/src/Config.php',
 );
